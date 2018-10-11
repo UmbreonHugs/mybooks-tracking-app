@@ -3,13 +3,17 @@
 *   via ListBooks.JS
 */
 import React, { Component } from 'react'
+import * as BooksAPI from './BooksAPI'
 import PropTypes from 'prop-types'
+import Book from './ListBooks'
 
 class BookShelf extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired
   }
   render() {
+    const { books } = this.props
+
     return (
         /** TODO: Make the shelves a functional code and seperate them via blocks */
       <div>
@@ -17,6 +21,9 @@ class BookShelf extends Component {
           <h2 className="bookshelf-title">Currently Reading</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
+            {books.map((books) => (
+              <Book bookTitle={books.title} bookAuthor={books.author} bookImage={books.imageLinks.thumbnail} />
+            ))}
             </ol>
           </div>
         </div>

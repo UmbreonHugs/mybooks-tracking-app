@@ -9,15 +9,24 @@ import Book from './ListBooks'
 import * as BooksAPI from './BooksAPI'
 
 class Search extends Component {
-  /** TODO: Make the search input functional */
   state = {
     query: '',
-    result: []
+    result: [],
+    noResult: false
   }
-  updateQuery = (query) => {
-    this.setState({ query: query.trim()})
+  updateQuery = (event) => {
+    const query = event.target.value;
+    this.setState({ query })
+    // check if something entered
       if (query) {
-        BooksAPI.search(query.trim(), 20).then(books => this.setState({result: books}))
+        BooksAPI.search(query).then(books => {
+          if (books.length > 0) {
+           this.setState({result: books})
+         } else {
+           // clear array
+           this.setState({result: [] })
+         }
+        })
       }
   }
   render() {
@@ -28,15 +37,14 @@ class Search extends Component {
         <div className="search-books-bar">
           <Link to="/" className="close-search">Close</Link>
           <div className="search-books-input-wrapper">
-            {  /** TODO: Populate the book results first before filtering */}
-
-            <input type="text" placeholder="Search by title or author" value={query} onChange={(event) => this.updateQuery(event.target.value)} />
+            <input type="text" placeholder="Search by title or author" value={query} onChange={this.updateQuery} />
           </div>
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {result.map(book =>
-              <Book bookTitle={book.title} bookAuthor={book.author} bookImage={book.imageLinks.thumbnail} bookId={book.id} />
+          {/* TODO: Add a fallback for the book thumbnail, title, and author */}
+            {result.map((books) =>
+              <Book bookTitle={books.title} bookAuthor={books.author} bookImage={books.imageLinks.thumbnail}/>
             )}
           </ol>
         </div>
