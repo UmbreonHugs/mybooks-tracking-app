@@ -9,9 +9,6 @@ import { Route, Link } from 'react-router-dom'
 class BooksApp extends React.Component {
   state = {
     books: [],
-    currentlyReading: [],
-    wantToRead: [],
-    read: [],
     /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
@@ -20,8 +17,6 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false
   }
-
-  /** TODO: Test this with Jasmine */
   componentDidMount() {
     BooksAPI.getAll().then((books) => this.setState({
       books

@@ -2,23 +2,23 @@
 *   This component will render individual books with its template and its options
 */
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 class Book extends Component {
+    /** TODO: Add a method to control the list of books */
   static propTypes = {
-    books: PropTypes.array.isRequired
+    bookTitle: PropTypes.object.isRequired,
+    bookId: PropTypes.object.isRequired,
+    bookImage: PropTypes.object.isRequired,
+    bookAuthor: PropTypes.object.isRequired
   }
   render() {
-    const {books} = this.props
-    let showingBooks
-    showingBooks = books
+    const { books } = this.props
     return (
-      showingBooks.map((books) => (
       <li>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${books.imageLinks.thumbnail})` }}></div>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${books.bookImage})` }}></div>
             <div className="book-shelf-changer">
               <select>
                 <option value="move" disabled>Move to...</option>
@@ -29,11 +29,10 @@ class Book extends Component {
               </select>
             </div>
           </div>
-          <div className="book-title">{books.title}</div>
-          <div className="book-authors">{books.author}</div>
+          <div className="book-title">{books.bookTitle}</div>
+          <div className="book-authors">{books.bookAuthor}</div>
         </div>
       </li>
-      ))
     )
   }
 }

@@ -11,6 +11,7 @@ class BookShelf extends Component {
   }
   render() {
     return (
+        /** TODO: Make the shelves a functional code and seperate them via blocks */
       <div>
         <div className="bookshelf">
           <h2 className="bookshelf-title">Currently Reading</h2>
