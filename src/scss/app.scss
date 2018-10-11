@@ -1,0 +1,16 @@
+// adjust variables here //
+// https://coolors.co/49c6e5-54defd-fffbfa-00bd9d-8bd7d2
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
+
+$font-size: 18px;
+$font-family: 'Source Sans Pro', sans-serif;
+$primary: #49c6e5;
+$secondary: #00bd9d;
+$background: #fff;
+$text-color: #666;
+$shade-1: #ded;
+
+@import 'books';
+@import 'elements';
+@import 'list';
+@import 'search';
