@@ -44,7 +44,7 @@ class Search extends Component {
           <ol className="books-grid">
           {/* TODO: Add a fallback for the book thumbnail, title, and author */}
             {result.map((books) =>
-              <Book bookTitle={books.title} bookAuthor={books.author} bookImage={books.imageLinks.thumbnail}/>
+              <Book books={books}/>
             )}
           </ol>
         </div>

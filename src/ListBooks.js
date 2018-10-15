@@ -6,13 +6,14 @@ import PropTypes from 'prop-types'
 
 class Book extends Component {
   static propTypes = {
-    bookTitle: PropTypes.object.isRequired,
-    bookAuthor: PropTypes.object.isRequired,
-    bookImage: PropTypes.object.isRequired
+    books: PropTypes.array.isRequired
   }
   // if no image, replace with default
   render() {
-    const { bookTitle, bookAuthor, bookImage } = this.props
+    const { books } = this.props
+    // placeholder image for thumbnail
+    let bookImage = books.imageLinks ?
+    books.imageLinks.thumbnail : ""
     return (
       <li>
         <div className="book">
@@ -28,8 +29,8 @@ class Book extends Component {
               </select>
             </div>
           </div>
-          <div className="book-title">{bookTitle}</div>
-          <div className="book-authors">{bookAuthor}</div>
+          <div className="book-title">{books.title}</div>
+          <div className="book-authors">{books.author}</div>
         </div>
       </li>
     )

@@ -21,6 +21,7 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((books) => this.setState({books}))
   }
   render() {
+    console.log(BooksAPI.getAll())
     return (
       <div className="app">
         <Route path="/search" render={({ history }) => (
