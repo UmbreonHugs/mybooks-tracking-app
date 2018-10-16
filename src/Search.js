@@ -21,16 +21,16 @@ class Search extends Component {
       if (query) {
         BooksAPI.search(query).then(books => {
           if (books.length > 0) {
-           this.setState({result: books})
+           this.setState({result: books, noResult: false })
          } else {
            // clear array
-           this.setState({result: [] })
+           this.setState({result: [], noResult: true })
          }
         })
       }
   }
   render() {
-    const { query, result } = this.state
+    const { query, result, noResult } = this.state
 /* this.state.query = search term */
     return (
       <div className="search-books">
@@ -42,10 +42,12 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-          {/* TODO: Add a fallback for the book thumbnail, title, and author */}
             {result.map((books) =>
               <Book books={books}/>
             )}
+            {noResult &&
+              <p>No books found</p>
+            }
           </ol>
         </div>
       </div>
