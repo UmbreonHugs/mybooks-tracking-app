@@ -1,7 +1,6 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import Book from './ListBooks'
 import BookShelf from './BookShelf'
 import Search from './Search'
 import { Route, Link } from 'react-router-dom'
@@ -18,13 +17,18 @@ class BooksApp extends React.Component {
     showSearchPage: false
   }
   componentDidMount() {
-    BooksAPI.getAll().then((books) => this.setState({books}))
+    BooksAPI.getAll().then((books) => this.setState({books: books}))
+  }
+  updateShelf = (id, shelf) => {
+    BooksAPI.update(id, shelf);
+    BooksAPI.getAll().then((books) => this.setState({books: books}))
+    console.log(`successs! ${id} & ${shelf}`)
   }
   render() {
     return (
       <div className="app">
         <Route path="/search" render={({ history }) => (
-          <Search />
+          <Search updateShelf={this.updateShelf} />
           )}/>
           <Route exact path="/" render={() => (
           <div className="list-books">
@@ -32,7 +36,7 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-                <BookShelf books={this.state.books}/>
+                <BookShelf books={this.state.books} updateShelf={this.updateShelf}/>
             </div>
             <div className="open-search">
               <Link to="/search">Add a book</Link>

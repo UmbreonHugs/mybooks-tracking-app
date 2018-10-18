@@ -6,9 +6,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class ShelfChange extends Component {
+  static PropTypes = {
+    bookId: PropTypes.object.isRequired,
+    currentShelf: PropTypes.object.isRequired,
+    updateShelf: PropTypes.func.isRequired
+  }
   render() {
+    const { bookId, updateShelf, currentShelf } = this.props
     return (
-      <select>
+      <select onChange={(event) => updateShelf(bookId, event.target.value)} defaultValue={currentShelf}>
         <option value="move" disabled>Move to...</option>
         <option value="currentlyReading">Currently Reading</option>
         <option value="wantToRead">Want to Read</option>

@@ -8,10 +8,11 @@ import Book from './ListBooks'
 
 class BookShelf extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    updateShelf: PropTypes.func.isRequired
   }
   render() {
-    const { books } = this.props
+    const { books, updateShelf } = this.props
     console.log(books)
     let readBooks, currentlyReading, wantToRead
     currentlyReading = books.filter((books) => books.shelf === 'currentlyReading' )
@@ -25,7 +26,7 @@ class BookShelf extends Component {
           <div className="bookshelf-books">
             <ol className="books-grid">
             {currentlyReading.map((books) => (
-              <Book books={books} />
+              <Book books={books} currentShelf="currentlyReading" updateShelf={updateShelf} />
             ))}
             </ol>
           </div>
@@ -35,7 +36,7 @@ class BookShelf extends Component {
           <div className="bookshelf-books">
             <ol className="books-grid">
               {wantToRead.map((books) => (
-                <Book books={books} />
+                <Book books={books} currentShelf="wantToRead" updateShelf={updateShelf} />
               ))}
             </ol>
           </div>
@@ -45,7 +46,7 @@ class BookShelf extends Component {
           <div className="bookshelf-books">
             <ol className="books-grid">
               {readBooks.map((books) => (
-                <Book books={books} />
+                <Book books={books} currentShelf="read" updateShelf={updateShelf} />
               ))}
             </ol>
           </div>
