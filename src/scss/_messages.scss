@@ -1,0 +1,12 @@
+.message-success {
+  display: block;
+  z-index: 1000px;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: 350px;
+  padding: 10px;
+  background: rgba(41, 124, 50, 0.8);
+  color: #fff;
+  border-radius: 5px;
+}

@@ -17,11 +17,14 @@ class BooksApp extends React.Component {
     showSearchPage: false
   }
   componentDidMount() {
+    this.fetchBooks();
+  }
+  fetchBooks = () => {
     BooksAPI.getAll().then((books) => this.setState({books: books}))
   }
   updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(response => {
-    BooksAPI.getAll().then((books) => this.setState({books: books}))
+    BooksAPI.getAll().then((books) => this.fetchBooks())
     this.props.history.push('/');
     console.log(`successs! ${book} & ${shelf}`)
     })
@@ -29,6 +32,9 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
+        <div class="message-success">
+          The book has been removed from your library!
+        </div>
         <Route path="/search" render={({ history }) => (
           <Search updateShelf={this.updateShelf} />
           )}/>

@@ -1,5 +1,8 @@
 // adjust variables here //
 // https://coolors.co/49c6e5-54defd-fffbfa-00bd9d-8bd7d2
+/* TODO: Fix the color scheme */
+/* TODO: Add a success message */
+
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
 
 $font-size: 18px;
@@ -13,4 +16,5 @@ $shade-1: #ded;
 @import 'books';
 @import 'elements';
 @import 'list';
+@import 'messages';
 @import 'search';

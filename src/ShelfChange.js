@@ -12,8 +12,7 @@ class ShelfChange extends Component {
     updateShelf: PropTypes.func.isRequired
   }
   render() {
-    let currentShelf = 'none';
-    const { book, updateShelf } = this.props
+    const { book, updateShelf, currentShelf } = this.props
     return (
       <select onChange={(event) => updateShelf(book, event.target.value)} defaultValue={currentShelf}>
         <option value="move" disabled>Move to...</option>
