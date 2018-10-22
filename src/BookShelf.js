@@ -13,7 +13,6 @@ class BookShelf extends Component {
   }
   render() {
     const { books, updateShelf } = this.props
-    console.log(books)
     let readBooks, currentlyReading, wantToRead
     currentlyReading = books.filter((books) => books.shelf === 'currentlyReading' )
     wantToRead = books.filter((books) => books.shelf === 'wantToRead' )

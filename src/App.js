@@ -3,7 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelf from './BookShelf'
 import Search from './Search'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, withRouter } from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
@@ -19,10 +19,12 @@ class BooksApp extends React.Component {
   componentDidMount() {
     BooksAPI.getAll().then((books) => this.setState({books: books}))
   }
-  updateShelf = (id, shelf) => {
-    BooksAPI.update(id, shelf);
+  updateShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(response => {
     BooksAPI.getAll().then((books) => this.setState({books: books}))
-    console.log(`successs! ${id} & ${shelf}`)
+    this.props.history.push('/');
+    console.log(`successs! ${book} & ${shelf}`)
+    })
   }
   render() {
     return (
@@ -47,4 +49,4 @@ class BooksApp extends React.Component {
     )
   }
 }
-export default BooksApp
+export default withRouter(BooksApp)

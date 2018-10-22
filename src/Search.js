@@ -44,14 +44,17 @@ class Search extends Component {
           </div>
         </div>
         <div className="search-books-results">
+          {result.length > 0 && (
           <ol className="books-grid">
-            {result.map((books) =>
-              <Book books={books} updateShelf={this.props.updateShelf}/>
+              <h3>Search returned {result.length} results</h3>
+              {result.map((books) =>
+                <Book books={books} updateShelf={this.props.updateShelf}/>
+              )}
+            </ol>
             )}
             {noResult &&
               <p>No books found</p>
             }
-          </ol>
         </div>
       </div>
     )
