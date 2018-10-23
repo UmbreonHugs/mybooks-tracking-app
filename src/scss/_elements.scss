@@ -5,9 +5,9 @@ html, body, .root {
 }
 body {
   line-height: 1.5;
-}
-body, .app {
-  background: white;
+ .app {
+    background: $background;
+  }
 }
 h2 {
   text-align: center;

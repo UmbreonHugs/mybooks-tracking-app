@@ -6,10 +6,10 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-}
-.books-grid li {
-  padding: 10px 15px;
-  text-align: left;
+  li {
+    padding: 10px 15px;
+    text-align: left;
+  }
 }
 
 .book {
@@ -46,12 +46,12 @@
   background-position: center;
   background-size: 20px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-.book-shelf-changer select {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
+  select {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
 }
 /* book cover */
 

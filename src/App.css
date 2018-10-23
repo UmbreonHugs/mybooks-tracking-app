@@ -70,8 +70,8 @@ html, body, .root {
 body {
   line-height: 1.5; }
 
-body, .app {
-  background: white; }
+body .app {
+  background: #eee; }
 
 h2 {
   text-align: center;
