@@ -7,8 +7,8 @@ import ShelfChange from './ShelfChange'
 
 class Book extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired,
-    currentShelf: PropTypes.object.isRequired,
+    books: PropTypes.object.isRequired,
+    currentShelf: PropTypes.string.isRequired,
     updateShelf: PropTypes.func.isRequired
   }
   // if no image, replace with default
