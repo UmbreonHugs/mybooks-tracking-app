@@ -9,7 +9,7 @@ import Book from './ListBooks'
 import * as BooksAPI from './BooksAPI'
 
 class Search extends Component {
-  static PropTypes = {
+  static propTypes = {
     updateShelf: PropTypes.func.isRequired
   }
   state = {
@@ -51,7 +51,7 @@ class Search extends Component {
             <div>
               <ol className="books-grid">
                   {result.map((books) =>
-                    <Book books={books} updateShelf={this.props.updateShelf} key={books.id} />
+                    <Book books={books} updateShelf={this.props.updateShelf} currentShelf="none" key={books.id} />
                   )}
                 </ol>
             </div>
