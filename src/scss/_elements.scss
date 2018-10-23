@@ -18,3 +18,24 @@ h2 {
 .center {
   text-align: center;
 }
+// scrollbar, selection customization
+::selection {
+  background: $primary;
+  color: #fff;
+}
+::-moz-selection {
+  background: $primary;
+  color: #fff;
+}
+body::-webkit-scrollbar {
+  width: 0.8em;
+  background-color: $dark;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $primary;
+}
