@@ -24,12 +24,15 @@ class Search extends Component {
       if (query) {
         BooksAPI.search(query).then(books => {
           if (books.length > 0) {
-           this.setState({result: books, noResult: false })
-         } else {
-           // clear array
-           this.setState({result: [], noResult: true })
-         }
+            this.setState({result: books, noResult: false })
+           } else {
+             // clear array
+            this.setState({result: [], noResult: true })
+           }
         })
+      } else {
+        // clear array if query is blank
+        this.setState({result: []})
       }
   }
   render() {
@@ -45,15 +48,16 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           {result.length > 0 && (
-          <ol className="books-grid">
-              <h3>Search returned {result.length} results</h3>
-              {result.map((books) =>
-                <Book books={books} updateShelf={this.props.updateShelf}/>
-              )}
-            </ol>
+            <div>
+              <ol className="books-grid">
+                  {result.map((books) =>
+                    <Book books={books} updateShelf={this.props.updateShelf}/>
+                  )}
+                </ol>
+            </div>
             )}
             {noResult &&
-              <p>No books found</p>
+              <p className="center">No books found</p>
             }
         </div>
       </div>
