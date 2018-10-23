@@ -18,7 +18,6 @@ class BookShelf extends Component {
     wantToRead = books.filter((books) => books.shelf === 'wantToRead' )
     readBooks = books.filter((books) => books.shelf === 'read' )
     return (
-        /** TODO: Make the shelves a functional code and seperate them via blocks */
       <div>
         <div className="bookshelf">
           <h2 className="bookshelf-title">Currently Reading</h2>
