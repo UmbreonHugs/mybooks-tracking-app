@@ -15,7 +15,9 @@ class ShelfChange extends Component {
     const { book, updateShelf, currentShelf } = this.props
     return (
       <select onChange={(event) => updateShelf(book, event.target.value)} defaultValue={currentShelf}>
-        <option value="move" disabled>Move to...</option>
+        <option value="none" disabled>
+          Move to...
+        </option>
         <option value="currentlyReading">Currently Reading</option>
         <option value="wantToRead">Want to Read</option>
         <option value="read">Read</option>

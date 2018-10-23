@@ -19,16 +19,21 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then((books) => this.setState({books: books}))
   }
   // update shelf
-  updateShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(response => {
+  updateShelf = (updateBook, shelf) => {
+    BooksAPI.update(updateBook, shelf).then(response => {
+    // put the book in the shelf locally
+    updateBook.shelf = shelf
+    this.setState(state => ({
+        books: state.books
+          .filter(book => book.id !== updateBook.id)
+          .concat([updateBook])
+      }));
     // message handling
     if (shelf === 'none') {
-      this.showMessage(`${book.title} has been removed from the shelves!`)
+      this.showMessage(`${updateBook.title} has been removed from the shelves!`)
     } else {
-      this.showMessage(`${book.title} has been moved to ${shelf}!`)
+      this.showMessage(`${updateBook.title} has been moved to ${shelf}!`)
     }
-    BooksAPI.getAll().then((books) => this.fetchBooks())
-    this.props.history.push('/');
     })
   }
   // see https://stackoverflow.com/a/42734261/2442104
