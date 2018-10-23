@@ -18,8 +18,10 @@ class BooksApp extends React.Component {
   fetchBooks = () => {
     BooksAPI.getAll().then((books) => this.setState({books: books}))
   }
+  // update shelf
   updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(response => {
+    // message handling
     if (shelf === 'none') {
       this.showMessage(`${book.title} has been removed from the shelves!`)
     } else {
@@ -27,7 +29,6 @@ class BooksApp extends React.Component {
     }
     BooksAPI.getAll().then((books) => this.fetchBooks())
     this.props.history.push('/');
-    console.log(`successs! ${book} & ${shelf}`)
     })
   }
   // see https://stackoverflow.com/a/42734261/2442104

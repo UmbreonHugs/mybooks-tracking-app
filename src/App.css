@@ -100,7 +100,7 @@ h2 {
   padding: 0 10px 20px; }
 
 .message-success {
-  z-index: 1000px;
+  z-index: 1000;
   position: fixed;
   bottom: 15px;
   left: 5px;

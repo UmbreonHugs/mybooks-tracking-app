@@ -51,7 +51,7 @@ class Search extends Component {
             <div>
               <ol className="books-grid">
                   {result.map((books) =>
-                    <Book books={books} updateShelf={this.props.updateShelf}/>
+                    <Book books={books} updateShelf={this.props.updateShelf} key={books.id} />
                   )}
                 </ol>
             </div>
