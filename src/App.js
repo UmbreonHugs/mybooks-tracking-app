@@ -14,7 +14,9 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false
+    showSearchPage: false,
+    showMessage: false,
+    messageString: ""
   }
   componentDidMount() {
     this.fetchBooks();
@@ -24,16 +26,30 @@ class BooksApp extends React.Component {
   }
   updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(response => {
+    if (shelf === 'none') {
+      this.showMessage(`${book.title} has been removed from the shelves!`)
+    } else {
+      this.showMessage(`${book.title} has been moved to ${shelf}!`)
+    }
     BooksAPI.getAll().then((books) => this.fetchBooks())
     this.props.history.push('/');
     console.log(`successs! ${book} & ${shelf}`)
     })
   }
+  // see https://stackoverflow.com/a/42734261/2442104
+  showMessage = (string) => {
+    this.setState({showMessage: true, messageString: `${string}`})
+    setTimeout(() => {
+      this.setState({
+        showMessage: false
+      });
+    }, 3000);
+  }
   render() {
     return (
       <div className="app">
-        <div class="message-success">
-          The book has been removed from your library!
+        <div className={`message-success ${this.state.showMessage ? 'show' : 'hidden'}`}>
+          {this.state.messageString}
         </div>
         <Route path="/search" render={({ history }) => (
           <Search updateShelf={this.updateShelf} />
@@ -44,7 +60,7 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-                <BookShelf books={this.state.books} updateShelf={this.updateShelf}/>
+                <BookShelf books={this.state.books} updateShelf={this.updateShelf} />
             </div>
             <div className="open-search">
               <Link to="/search">Add a book</Link>

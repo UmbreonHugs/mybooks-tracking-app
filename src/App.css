@@ -39,7 +39,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #49c6e5;
+  background: #269f61;
   background-image: url("./icons/arrow-drop-down.svg");
   background-repeat: no-repeat;
   background-position: center;
@@ -81,7 +81,7 @@ h2 {
 
 .list-books-title {
   padding: 10px 0;
-  background: #49c6e5;
+  background: #269f61;
   text-align: center; }
 
 .list-books-title h1 {
@@ -97,16 +97,21 @@ h2 {
   padding: 0 10px 20px; }
 
 .message-success {
-  display: block;
   z-index: 1000px;
   position: fixed;
-  top: 5px;
+  bottom: 15px;
   right: 5px;
   width: 350px;
-  padding: 10px;
+  padding: 15px;
   background: rgba(41, 124, 50, 0.8);
   color: #fff;
   border-radius: 5px; }
+
+.show {
+  display: block; }
+
+.hidden {
+  display: none; }
 
 .search-books-bar {
   position: fixed;
