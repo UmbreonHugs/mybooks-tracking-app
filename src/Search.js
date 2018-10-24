@@ -35,6 +35,7 @@ class Search extends Component {
                 /// push it in the array
                 this.setState({result: this.state.result.concat(books.shelf)})
               }
+              return books
             })
            } else {
              // clear array
