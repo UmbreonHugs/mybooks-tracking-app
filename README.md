@@ -7,5 +7,5 @@ In order to install this project on your machine, you **must have Node.js instal
 
 # Usage
 1. **Clone the repository** onto your PC. You can do so by running this command: `git clone https://github.com/UmbreonHugs/myreads-book-tracking-app.git`
-2. **Once cloned, install the dependencies required for the project to work** You can do so by navigating to the index of the project, and running this command: `npm install`. This process will take several minutes.
+2. **Once cloned, install the dependencies required for the project.** You can do so by navigating to the index of the project, and running this command: `npm install`. This process will take several minutes.
 3. **Launch the application once the dependencies are installed.** This can be done by running this command: `npm start`. A new browser window should open up, pointing to http://localhost:3000

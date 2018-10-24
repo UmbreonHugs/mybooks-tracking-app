@@ -52,7 +52,7 @@ class BooksApp extends React.Component {
           {this.state.messageString}
         </div>
         <Route path="/search" render={({ history }) => (
-          <Search updateShelf={this.updateShelf} />
+          <Search updateShelf={this.updateShelf} mainBooks={this.state.books}/>
           )}/>
           <Route exact path="/" render={() => (
           <div className="list-books">

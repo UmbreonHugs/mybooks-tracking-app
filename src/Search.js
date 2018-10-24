@@ -10,11 +10,13 @@ import * as BooksAPI from './BooksAPI'
 
 class Search extends Component {
   static propTypes = {
-    updateShelf: PropTypes.func.isRequired
+    updateShelf: PropTypes.func.isRequired,
+    mainBooks: PropTypes.object.isRequired
   }
   state = {
     query: '',
     result: [],
+//    currentBooks: [],
     noResult: false
   }
   updateQuery = (event) => {
@@ -25,6 +27,15 @@ class Search extends Component {
         BooksAPI.search(query).then(books => {
           if (books.length > 0) {
             this.setState({result: books, noResult: false })
+            // search and update the shelves for each book
+            this.state.result.map(books => {
+              let bookFound = this.props.mainBooks.find(mainBook => mainBook.id === books.id)
+              if (bookFound) {
+                books.shelf = bookFound.shelf;
+                /// push it in the array
+                this.setState({result: this.state.result.concat(books.shelf)})
+              }
+            })
            } else {
              // clear array
             this.setState({result: [], noResult: true })
@@ -51,7 +62,7 @@ class Search extends Component {
             <div>
               <ol className="books-grid">
                   {result.map((books) =>
-                    <Book books={books} updateShelf={this.props.updateShelf} currentShelf="none" key={books.id} />
+                    <Book books={books} updateShelf={this.props.updateShelf} currentShelf={books.shelf} key={books.id} />
                   )}
                 </ol>
             </div>

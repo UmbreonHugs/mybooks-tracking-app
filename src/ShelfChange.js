@@ -8,13 +8,13 @@ import PropTypes from 'prop-types'
 class ShelfChange extends Component {
   static propTypes = {
     book: PropTypes.object.isRequired,
-    currentShelf: PropTypes.string.isRequired,
-    updateShelf: PropTypes.func.isRequired
+    updateShelf: PropTypes.func.isRequired,
+    currentShelf: PropTypes.string
   }
   render() {
     const { book, updateShelf, currentShelf } = this.props
     return (
-      <select onChange={(event) => updateShelf(book, event.target.value)} defaultValue={currentShelf}>
+      <select onChange={(event) => updateShelf(book, event.target.value)} value={currentShelf}>
         <option value="none" disabled>
           Move to...
         </option>
