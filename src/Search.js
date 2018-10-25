@@ -26,17 +26,14 @@ class Search extends Component {
       if (query) {
         BooksAPI.search(query).then(books => {
           if (books.length > 0) {
-            this.setState({result: books, noResult: false })
             // search and update the shelves for each book
-            this.state.result.map(books => {
-              let bookFound = this.props.mainBooks.find(mainBook => mainBook.id === books.id)
+            this.setState({result: books.map(book => {
+              let bookFound = this.props.mainBooks.find(mainBook => mainBook.id === book.id)
               if (bookFound) {
-                books.shelf = bookFound.shelf;
-                /// push it in the array
-                this.setState({result: this.state.result.concat(books.shelf)})
+                book.shelf = bookFound.shelf;
               }
-            return books
-            })
+              return book
+            }), noResult: false })
            } else {
              // clear array
             this.setState({result: [], noResult: true })
