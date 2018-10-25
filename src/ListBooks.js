@@ -22,6 +22,9 @@ class Book extends Component {
         <div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${bookImage})` }}></div>
+              {(currentShelf && window.location.pathname === "/search") &&
+                <span className="bookmark">{currentShelf}</span>
+              }
             <div className="book-shelf-changer">
               <ShelfChange book={books} updateShelf={updateShelf} currentShelf={currentShelf} />
             </div>

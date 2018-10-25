@@ -24,6 +24,14 @@
 .book-authors {
   color: #999; }
 
+.bookmark {
+  position: absolute;
+  padding: 5px;
+  color: #fff;
+  background-color: #269f61;
+  top: 0;
+  font-size: 10px; }
+
 .book-top {
   position: relative;
   height: 200px;
