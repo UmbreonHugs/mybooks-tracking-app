@@ -23,7 +23,7 @@ class ShelfChange extends Component {
     }
     return (
       <select onChange={(event) => updateShelf(book, event.target.value)} value={shelf}>
-        <option value="none" disabled>
+        <option disabled>
           Move to...
         </option>
         <option value="currentlyReading">Currently Reading</option>
